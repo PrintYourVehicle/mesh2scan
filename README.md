@@ -4,6 +4,9 @@ A Blender extension that performs a virtual 3D scan of a mesh you supply. It ray
 
 > Experimental, pre-release (`0.0.1`). It scans the geometry you give it, so it measures the shape that is actually there — it does not invent detail that a game mesh only fakes with normal maps. Results can have open boundaries, are not watertight-guaranteed, and are not CAD/Class-A surfaces.
 
+<img width="1672" height="941" alt="Car Scan_ From Metal to Mesh" src="https://github.com/user-attachments/assets/2be1aa1b-69fd-4de4-b120-80dcbd0a9cce" />
+
+
 ## Features
 
 - **Virtual scanning**: casts rays from virtual scanner standoff positions and records actual hit points and normals (misses are discarded), or samples the surface directly for a zero-noise baseline. The original mesh stays untouched; the scan is a new object.
