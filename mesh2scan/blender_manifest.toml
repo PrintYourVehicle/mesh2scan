@@ -1,6 +1,6 @@
 schema_version = "1.0.0"
 id = "mesh2scan"
-version = "0.0.1"
+version = "0.0.2"
 name = "mesh2scan"
 tagline = "an experimental run"
 maintainer = "PrintYourVehicle"

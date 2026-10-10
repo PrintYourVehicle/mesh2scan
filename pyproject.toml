@@ -1,6 +1,6 @@
 [project]
 name = "mesh2scan"
-version = "0.0.1"
+version = "0.0.2"
 description = "an experimental run"
 requires-python = ">=3.11"
 license = "GPL-3.0-or-later"

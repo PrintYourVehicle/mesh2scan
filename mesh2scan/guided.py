@@ -27,6 +27,7 @@ def refine_arrays(coords, triangles, detail, curvature, target, strength):
         nv = len(co)
         encoded = edges[:, 0].astype(np.int64) * nv + edges[:, 1]
         unique, inverse, costs = np.unique(encoded, return_inverse=True, return_counts=True)
+        inverse = inverse.ravel()  # NumPy 2.0: keep the inverse flat for mids[inverse].
         edge = np.stack((unique // nv, unique % nv), axis=1).astype(np.int32)
         delta = co[edge[:, 1]] - co[edge[:, 0]]
         scores = np.sum(delta * delta, axis=1) * (1 + strength * 5 * weights[edge].mean(axis=1))

@@ -971,7 +971,7 @@ class M2S_PT_panel(bpy.types.Panel):
                 M2S_OT_profile.bl_idname, text="Save Current Profile", icon="FILE_TICK"
             ).action = "SAVE"
         layout.separator()
-        layout.label(text="0.0.1 · synthetic geometry · experimental")
+        layout.label(text="0.0.2 · synthetic geometry · experimental")
 
 
 @persistent

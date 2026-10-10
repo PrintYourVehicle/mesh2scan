@@ -878,7 +878,7 @@ class ScanJob:
             fm.update()
             features = self.new_object("_M2S features", fm)
         self.report = {
-            "version": "0.0.1",
+            "version": "0.0.2",
             "blender": bpy.app.version_string,
             "source": original.name,
             "acquisition": opts.acquisition,

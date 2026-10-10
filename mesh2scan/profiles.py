@@ -89,6 +89,24 @@ PROFILES = {
             "crease_angle": 0.4363323130,
         },
     ),
+    "DEFACET": (
+        "De-facet CAD · 1M",
+        "Smooth faceted LOD panels into a continuous surface while keeping real "
+        "body lines sharp; aimed at reverse-engineering CAD surfaces",
+        {
+            "triangles_million": 1.0,
+            "surface_mode": "SMOOTH",
+            "smooth_levels": 3,
+            "smooth_strength": 0.85,
+            "fairing_iterations": 3,
+            "adaptive": 0.7,
+            "detail_boost": 5.0,
+            # ~23 degrees: facet seams smooth away, genuine creases stay sharp.
+            "crease_angle": 0.4014257280,
+            "boundary_recovery": True,
+            "snap_radius": 0.0,
+        },
+    ),
     "EXTERIOR5": (
         "Exterior · 5M total",
         "Selected parts share 5M, adjusted to available RAM",

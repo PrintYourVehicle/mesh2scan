@@ -209,7 +209,7 @@ class BatchScanJob:
                 previous += float(fraction)
             reports = [job.report for job in self.jobs]
             self.report = {
-                "version": "0.0.1",
+                "version": "0.0.2",
                 "blender": bpy.app.version_string,
                 "batch_id": self.batch_id,
                 "scope": "SELECTED",

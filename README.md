@@ -2,7 +2,7 @@
 
 A Blender extension that performs a virtual 3D scan of a mesh you supply. It ray-casts from virtual scanner positions to acquire real surface observations, then reconstructs a separate, densely triangulated scan mesh from those measurements. The original object is never modified.
 
-> Experimental, pre-release (`0.0.1`). It scans the geometry you give it, so it measures the shape that is actually there — it does not invent detail that a game mesh only fakes with normal maps. Results can have open boundaries, are not watertight-guaranteed, and are not CAD/Class-A surfaces.
+> Experimental, pre-release (`0.0.2`). It scans the geometry you give it, so it measures the shape that is actually there — it does not invent detail that a game mesh only fakes with normal maps. Results can have open boundaries, are not watertight-guaranteed, and are not CAD/Class-A surfaces.
 
 <img width="1672" height="941" alt="Car Scan_ From Metal to Mesh" src="https://github.com/user-attachments/assets/2be1aa1b-69fd-4de4-b120-80dcbd0a9cce" />
 
@@ -25,7 +25,7 @@ A Blender extension that performs a virtual 3D scan of a mesh you supply. It ray
 
 ## Install
 
-1. Download `mesh2scan-0.0.1.zip` (the build output, **not** the source ZIP).
+1. Download `mesh2scan-0.0.2.zip` (the build output, **not** the source ZIP).
 2. In Blender: **Preferences → Get Extensions → menu → Install from Disk**, pick the ZIP, and enable mesh2scan.
 3. Open the 3D View sidebar (`N`) → **mesh2scan**.
 
@@ -43,7 +43,7 @@ For a whole exterior, select the exterior parts and choose an Exterior preset. T
 Requires Python 3.11+ (standard library only).
 
 ```sh
-python tools/build.py            # writes dist/mesh2scan-0.0.1.zip
+python tools/build.py            # writes dist/mesh2scan-0.0.2.zip
 python tools/build.py --source   # also writes the repository archive
 ```
 

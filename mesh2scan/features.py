@@ -85,6 +85,9 @@ def curved_reference(mesh, feature_edges, curvature, options):
     all_edges.sort(axis=2)
     all_keys = all_edges[:, :, 0].astype(np.int64) * nv + all_edges[:, :, 1]
     edge_keys, edge_inverse = np.unique(all_keys, return_inverse=True)
+    # NumPy 2.0 returns an inverse shaped like the input; keep it flat so the
+    # per-edge reductions below match np.repeat(..., 3) over the (F, 3) edges.
+    edge_inverse = edge_inverse.ravel()
     side = np.linalg.norm(co[all_edges[:, :, 1]] - co[all_edges[:, :, 0]], axis=2)
     twice_area = np.linalg.norm(np.cross(p[:, 1] - p[:, 0], p[:, 2] - p[:, 0]), axis=1)
     altitude = twice_area / np.maximum(side.max(axis=1), 1e-20)
@@ -155,6 +158,9 @@ def curved_reference(mesh, feature_edges, curvature, options):
     unique_points, first, inverse = np.unique(
         keys.reshape(-1, 4), axis=0, return_index=True, return_inverse=True
     )
+    # NumPy 2.0 can return the inverse with the input's leading shape; flatten
+    # it so inverse[indices] maps grid points to shared reference vertices.
+    inverse = inverse.ravel()
     indices = (
         np.arange(len(tri), dtype=np.int32)[:, None, None] * len(grid)
         + np.array(local_tri, np.int32)[None, :, :]
