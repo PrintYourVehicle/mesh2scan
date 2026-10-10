@@ -1,0 +1,2 @@
+# Developer tooling only. Blender already includes NumPy at runtime.
+ruff==0.14.1

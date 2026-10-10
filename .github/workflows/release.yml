@@ -1,0 +1,26 @@
+name: Package release
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build extension and source archives
+        run: python tools/build.py --source
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mesh2scan-release-files
+          path: dist/*.zip
+      - name: Draft GitHub release for a version tag
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/*.zip --draft --generate-notes

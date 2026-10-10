@@ -1,0 +1,39 @@
+name: Blender compatibility
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - python: '3.11'
+            bpy: '4.5.4'
+          - python: '3.13'
+            bpy: '5.1.0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+      - name: Install native Blender runtime and developer checks
+        run: python -m pip install bpy==${{ matrix.bpy }} -r requirements-dev.txt
+      - name: Check Python correctness
+        run: ruff check .
+      - name: Focused native Blender smoke check
+        run: python tests/blender_smoke.py
+      - name: Restricted installation and read-only UI
+        run: python tests/lifecycle.py
+      - name: Build install ZIP
+        run: python tools/build.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mesh2scan-blender-${{ matrix.bpy }}
+          path: dist/mesh2scan-*.zip

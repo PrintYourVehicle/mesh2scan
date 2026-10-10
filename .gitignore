@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ruff_cache/
+dist/
+reports/
+*.blend
+*.blend1
+scanner_profiles.json
+.DS_Store
+Thumbs.db

@@ -1,0 +1,23 @@
+name: Scan defect
+description: Report missing faces, shape artifacts or a stopped capture
+title: '[Defect] '
+labels: []
+body:
+  - type: input
+    id: blender
+    attributes:
+      label: Blender and mesh2scan versions
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction
+      description: Include preset, method, requested and effective target, and the exported JSON report.
+    validations:
+      required: true
+  - type: textarea
+    id: geometry
+    attributes:
+      label: Geometry and screenshots
+      description: Attach a small shareable mesh if possible; screenshots alone cannot reproduce topology defects.
